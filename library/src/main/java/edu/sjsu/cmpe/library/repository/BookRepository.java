@@ -33,6 +33,7 @@ public class BookRepository implements BookRepositoryInterface {
 	    book.setCoverimage(new URL("http://goo.gl/N96GJN"));
 	} catch (MalformedURLException e) {
 	    // eat the exception
+		System.out.println("Exception in bookrepository.java-"+e.getMessage());
 	}
 	bookMap.put(book.getIsbn(), book);
 
@@ -44,6 +45,8 @@ public class BookRepository implements BookRepositoryInterface {
 	    book.setCoverimage(new URL("http://goo.gl/ZGmzoJ"));
 	} catch (MalformedURLException e) {
 	    // eat the exception
+		System.out.println("Exception in bookrepository.java-"+e.getMessage());
+
 	}
 	bookMap.put(book.getIsbn(), book);
 
@@ -78,6 +81,20 @@ public class BookRepository implements BookRepositoryInterface {
 	return newBook;
     }
 
+    @Override
+   	public
+       Book addBook(Book newBook){
+       	bookInMemoryMap.putIfAbsent(newBook.getIsbn(), newBook);
+   		return newBook;
+       }
+       
+       @Override
+      	public
+          void updateBook(Long isbn,Book newBook){
+          	bookInMemoryMap.put(isbn, newBook);
+      		
+          }
+    
     /**
      * @see edu.sjsu.cmpe.library.repository.BookRepositoryInterface#getBookByISBN(java.lang.Long)
      */

@@ -44,4 +44,10 @@ public interface BookRepositoryInterface {
      *            an ISBN of the book to be deleted
      */
     void delete(Long isbn);
+    
+/*Method to add new book to the hashmap with the ISBN as sent by publisher*/
+    
+    Book addBook(Book newBook);
+    
+    void updateBook(Long isbn,Book newBook);
 }

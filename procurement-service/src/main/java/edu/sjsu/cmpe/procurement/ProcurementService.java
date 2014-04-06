@@ -16,10 +16,8 @@ import edu.sjsu.cmpe.procurement.config.ProcurementServiceConfiguration;
 public class ProcurementService extends Service<ProcurementServiceConfiguration> {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-
-    /**
-     * FIXME: THIS IS A HACK!
-     */
+    public static String queueName;
+    public static String topicName;
     public static Client jerseyClient;
 
     public static void main(String[] args) throws Exception {
@@ -53,8 +51,8 @@ public class ProcurementService extends Service<ProcurementServiceConfiguration>
 	 */
 	environment.addResource(RootResource.class);
 
-	String queueName = configuration.getStompQueueName();
-	String topicName = configuration.getStompTopicPrefix();
+    ProcurementService.queueName = configuration.getStompQueueName();
+    ProcurementService.topicName = configuration.getStompTopicPrefix();
 	log.debug("Queue name is {}. Topic is {}", queueName, topicName);
 	// TODO: Apollo STOMP Broker URL and login
 

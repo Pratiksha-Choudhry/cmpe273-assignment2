@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Book {
 
-    public enum Status {
+   /* public enum Status {
 	available("available"), checkedout("checkedout"), lost("lost");
 
 	private String value;
@@ -37,7 +37,7 @@ public class Book {
 	    }
 	    throw new IllegalArgumentException();
 	}
-    }
+    }*/
 
     @NotNull
     private long isbn;
@@ -51,7 +51,7 @@ public class Book {
     private URL coverimage;
 
     /** Default is 'available' */
-    private Status status = Status.available;
+    private String status = "available";
 
     /**
      * @return the isbn
@@ -113,19 +113,28 @@ public class Book {
 	this.coverimage = coverImage;
     }
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+    
     /**
      * @return the status
-     */
+     *//*
     public Status getStatus() {
 	return status;
     }
 
-    /**
+    *//**
      * @param status
      *            the status to set
-     */
+     *//*
     public void setStatus(Status status) {
 	this.status = status;
-    }
+    }*/
 
 }
